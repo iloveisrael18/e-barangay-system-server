@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:hidno', async (req, res) =>{
-    let hidno = req.query.hid
+    let hidno = req.params.hidno
 
     let constituent = await cnts.findOne({hidno: hidno})
     if(!constituent) return res.status(400).send('No matching constituent') 
@@ -50,6 +50,8 @@ router.post('/', async (req, res) => {
     }
 
 })
+
+router.patch('/')
 
 module.exports = router
 
