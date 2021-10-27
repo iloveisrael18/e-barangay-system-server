@@ -31,7 +31,7 @@ const constituents = new mongoose.Schema({
         default: null
     },
     bdate: {
-        type: String,
+        type: Date,
         default: null
     },
     gender: {
@@ -63,11 +63,11 @@ const constituents = new mongoose.Schema({
         default: null
     },
     resfrom: {
-        type: String,
+        type: Date,
         default: null
     },
     resto: {
-        type: String,
+        type: Date,
         default: null
     },
     
