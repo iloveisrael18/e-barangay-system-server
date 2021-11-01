@@ -9,7 +9,7 @@ router.get('/getregion', async (req, res)=>{
 
 })
 
-router.get('/getprovice', async (req, res)=>{
+router.post('/getprovice', async (req, res)=>{
     let region = req.body.region
 
     let details = await brgy.distinct('Province',{Region: region})
@@ -17,7 +17,7 @@ router.get('/getprovice', async (req, res)=>{
 
 })
 
-router.get('/getcity_municipality', async (req, res)=>{
+router.post('/getcity_municipality', async (req, res)=>{
 
     let province = req.body.province
 
@@ -25,7 +25,7 @@ router.get('/getcity_municipality', async (req, res)=>{
     res.send(city_municipality)
 })
 
-router.get('/getbarangay', async (req, res)=>{
+router.post('/getbarangay', async (req, res)=>{
 
     let city_municipality = req.body.city_municipality
 
