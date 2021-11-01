@@ -3,7 +3,7 @@ const mongoose= require('mongoose')
 const barangaySchema = new mongoose.Schema({
   Region: String,
   Province: String,
-  City_municipality: String,
+  City_Municipality: String,
   Barangay: String,
   Adress: String,
   landline_Number: String,
