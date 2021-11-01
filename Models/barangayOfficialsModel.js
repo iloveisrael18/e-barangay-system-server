@@ -1,15 +1,15 @@
 const mongoose = require('mongoose')
 
 const barangayOfficialsSchema = new mongoose.Schema({
-    brgy_id: String,
-    pic_url: String,
-    fullname: String,
-    dob: Date,
-    age: Number,
-    gender: String,
-    religion: String,
-    marital_status: String
-  
+    BarangayID: String,
+    Position: String,
+    LastName: String,
+    FirstName: String,
+    MiddleName: String,
+    Suffix: String,
+    Email_Address: String,
+    Mobile_Number: String,
+    Picture: String
 })
 
-module.exports = mongoose.model("barangay_officials", barangayOfficialsSchema, "barangay_officials")
+module.exports = mongoose.model("barangay-officials", barangayOfficialsSchema, "barangay-officials")
