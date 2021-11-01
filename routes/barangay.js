@@ -3,10 +3,12 @@ const router = express.Router()
 const brgy = require('../Models/barangayModel')
 
 
+
 router.get('/', async (req,res)=>{
 
     brgyList = await brgy.find()
     res.send(brgyList)
+    
 })
 
 router.get('/:brgyid', async (req,res)=>{
@@ -20,16 +22,16 @@ router.get('/:brgyid', async (req,res)=>{
 router.post('/', async (req,res)=>{
 
     let brgy_details = {
-        logo_url: req.body.logo_url,
-        picture_url: req.body.picture_url,
-        province_name: req.body.province_name,
-        city_municipality_name: req.body.city_municipality_name,
-        brgy_name: req.body.brgy_name,
-        brgy_address: req.body.brgy_address,
-        brgy_contact: req.body.brgy_contact
+        Region: req.body.Region,
+        Province: req.body.Province,
+        City_municipality: req.body.City_municipality,
+        Barangay: req.body.Barangay,
+        Adress: req.body.Adress,
+        landline_Number: req.body.landline_Number,
+        Mobile_Number: req.body.Mobile_Number
     }
     //check if exist 
-    let brgy_check = await brgy.findOne({province_name: brgy_details.province_name, city_municipality_name: brgy_details.city_municipality_name, brgy_name: brgy_details.brgy_name})
+    let brgy_check = await brgy.findOne({Province: brgy_details.Province, City_municipality: brgy_details.City_municipality, Barangay: brgy_details.Barangay})
     console.log(brgy_check)
      if(brgy_check) return res.status(400).send('Brangay is already exist')
    
@@ -49,17 +51,17 @@ router.put('/:brgy_id', async (req,res)=>{
     let brgy_id = req.params.brgy_id
 
     let brgy_details = {
-        logo_url: req.body.logo_url,
-        picture_url: req.body.picture_url,
-        province_name: req.body.province_name,
-        city_municipality_name: req.body.city_municipality_name,
-        brgy_name: req.body.brgy_name,
-        brgy_address: req.body.brgy_address,
-        brgy_contact: req.body.brgy_contact
+        Region: req.body.Region,
+        Province: req.body.Province,
+        City_municipality: req.body.City_municipality,
+        Barangay: req.body.Barangay,
+        Adress: req.body.Adress,
+        landline_Number: req.body.landline_Number,
+        Mobile_Number: req.body.Mobile_Number
     }
 
     //check if exist 
-    let brgy_check = await brgy.findOne({province_name: brgy_details.province_name, city_municipality_name: brgy_details.city_municipality_name, brgy_name: brgy_details.brgy_name})
+    let brgy_check = await brgy.findOne({Province: brgy_details.Province, City_municipality: brgy_details.City_municipality, Barangay: brgy_details.Barangay})
     if(brgy_check) {
         if(brgy_check._id != brgy_id)
         {
