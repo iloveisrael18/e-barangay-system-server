@@ -10,6 +10,7 @@ const home = require('./routes/home')
 require('./db')
 
 app.use(cors())
+app.options('*', cors())
 
 app.use(express.json())
 app.use('/api/constituents', constituents)
