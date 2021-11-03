@@ -18,6 +18,14 @@ router.get('/:brgyid', async (req,res)=>{
     res.send(brgyList)
 })
 
+router.get('/:brgyname', async (req,res)=>{
+
+    let brgyname = req.params.brgyname
+    brgyList = await brgy.findOne({Baragay: brgyname})
+    res.send(brgyList)
+})
+
+
 
 router.post('/', async (req,res)=>{
 
