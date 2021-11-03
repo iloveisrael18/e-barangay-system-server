@@ -1,7 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const brgy_offi = require('../Models/barangayOfficialsModel')
+const app = express()
+const cors= require('cors')
 
+app.use(cors({
+    origin: '*'
+}))
+app.options('*', cors())
 
 router.get('/', async (req, res)=>{
 
