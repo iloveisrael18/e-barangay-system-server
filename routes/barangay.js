@@ -25,7 +25,7 @@ router.post('/PROVINCE', async (req,res)=>{
     res.send(provinceList)
 })
 
-router.post('/CITY_MUNICIPALITY', async (req,res)=>{
+router.post('/CITYMUNICIPALITY', async (req,res)=>{
 
     let PROVINCE = req.body.PROVINCE
     CITY_MUNICIPALITY_List = await brgy.distinct('CITY_MUNICIPALITY',{PROVINCE, PROVINCE})
