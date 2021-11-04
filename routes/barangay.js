@@ -39,6 +39,8 @@ router.post('/BARANGAY', async (req,res)=>{
     res.send(barangaylist)
 })
 
+
+
 router.get('/barangay/:BARANGAY_ID', async (req,res)=>{
 
     let BARANGAY_ID = req.params.BARANGAY_ID

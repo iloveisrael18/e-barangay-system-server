@@ -11,12 +11,19 @@ router.get('/', async (req, res)=>{
 
 })
 
-router.get('/:brgy_offi_id', async (req, res)=>{
 
-    let brgy_offi_id = req.params.brgy_offi_id
-    let brgyofficialsList = await brgy_offi.findOne({_id:brgy_offi_id})
-    res.send(brgyofficialsList)
+router.get('/BARANGAYOFFICIALS', async (req, res)=>{
 
+    let barangayDetails = {
+        REGION: req.query.REGION,
+        PROVINCE: req.query.PROVINCE,
+        CITY_MUNICIPALITY: req.query.CITY_MUNICIPALITY,
+        BARANGAY: req.query.BARANGAY,
+    }
+
+    let officials = await brgy_offi.find(barangayDetails)
+    res.send(officials)
+    
 })
 
 router.post('/', async (req, res)=>{
