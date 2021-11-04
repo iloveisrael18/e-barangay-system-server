@@ -9,15 +9,17 @@ const home = require('./routes/home')
 
 require('./db')
 
-app.use(cors())
-app.options('*', cors())
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}))
+
 
 app.use(express.json())
-app.use('/api/constituents', constituents)
+app.use('/api/constituents',constituents)
 app.use('/api/certrequests', certrequests)
 app.use('/api/barangay', barangay)
 app.use('/api/barangayofficials', barangayofficials)
-app.use('/api/home', home)
 
 
 const port = process.env.PORT || 3000
