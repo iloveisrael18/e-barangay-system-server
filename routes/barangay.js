@@ -13,29 +13,29 @@ router.get('/',async (req,res)=>{
 
 router.get('/REGION', async (req,res)=>{
 
-    let PROVINCE = req.body.PROVINCE
-    regionList = await brgy.findOne({PROVINCE: PROVINCE})
+     
+    regionList = await brgy.distinct('REGION')
     res.send(regionList)
 })
 
 router.post('/PROVINCE', async (req,res)=>{
 
     let REGION = req.body.REGION
-    provinceList = await brgy.findOne({REGION: REGION})
+    provinceList = await brgy.distinct('PROVINCE',{REGION, REGION})
     res.send(provinceList)
 })
 
 router.post('/CITY_MUNICIPALITY', async (req,res)=>{
 
     let PROVINCE = req.body.PROVINCE
-    CITY_MUNICIPALITY_List = await brgy.findOne({PROVINCE: PROVINCE})
+    CITY_MUNICIPALITY_List = await brgy.distinct('CITY_MUNICIPALITY',{PROVINCE, PROVINCE})
     res.send(CITY_MUNICIPALITY_List)
 })
 
 router.post('/BARANGAY', async (req,res)=>{
 
     let CITY_MUNICIPALITY = req.body.CITY_MUNICIPALITY
-    barangaylist = await brgy.findOne({CITY_MUNICIPALITY: CITY_MUNICIPALITY})
+    barangaylist = await rgy.distinct('BARANGAY',{CITY_MUNICIPALITY, CITY_MUNICIPALITY})
     res.send(barangaylist)
 })
 
