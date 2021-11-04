@@ -35,7 +35,7 @@ router.post('/CITYMUNICIPALITY', async (req,res)=>{
 router.post('/BARANGAY', async (req,res)=>{
 
     let CITY_MUNICIPALITY = req.body.CITY_MUNICIPALITY
-    barangaylist = await rgy.distinct('BARANGAY',{CITY_MUNICIPALITY, CITY_MUNICIPALITY})
+    barangaylist = await brgy.distinct('BARANGAY',{CITY_MUNICIPALITY, CITY_MUNICIPALITY})
     res.send(barangaylist)
 })
 
