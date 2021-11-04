@@ -5,11 +5,12 @@ const constituents = require('./routes/constituents')
 const certrequests = require('./routes/certrequests')
 const barangay = require('./routes/barangay')
 const barangayofficials = require('./routes/barangayOfficials')
-const home = require('./routes/home')
 
 require('./db')
 
-app.use(cors())
+app.use(cors({
+    origin: '*'
+}))
 
 app.use(express.json())
 app.use('/api/constituents',constituents)

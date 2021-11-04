@@ -1,9 +1,13 @@
 const express= require('express')
 const router = express.Router()
 const brgy = require('../Models/barangayModel')
+const cors = require('cors')
+const app = express()
+app.use(cors({
+    origin: '*'
+}))
 
-
-router.get('/', async (req,res)=>{
+router.get('/', cors(),async (req,res)=>{
 
     brgyList = await brgy.find()
     res.send(brgyList)
