@@ -1,13 +1,6 @@
 const express= require('express')
 const router = express.Router()
 const brgy = require('../Models/barangayModel')
-const app = express()
-const cors= require('cors')
-
-app.use(cors({
-    origin: '*'
-}))
-app.options('*', cors())
 
 
 router.get('/', async (req,res)=>{
@@ -17,20 +10,12 @@ router.get('/', async (req,res)=>{
     
 })
 
-router.get('/:brgyid', async (req,res)=>{
+router.get('/:BARANGAY_ID', async (req,res)=>{
 
-    let brgy_id = req.params.brgyid
-    brgyList = await brgy.findOne({_id: brgy_id})
+    let BARANGAY_ID = req.params.BARANGAY_ID
+    brgyList = await brgy.findOne({_id: BARANGAY_ID})
     res.send(brgyList)
 })
-
-router.get('/:brgyname', async (req,res)=>{
-
-    let brgyname = req.params.brgyname
-    brgyList = await brgy.findOne({Baragay: brgyname})
-    res.send(brgyList)
-})
-
 
 
 router.post('/', async (req,res)=>{
@@ -60,11 +45,10 @@ router.post('/', async (req,res)=>{
 
 
 
-router.put('/:brgy_id', async (req,res)=>{
-
-    let brgy_id = req.params.brgy_id
+router.put('/', async (req,res)=>{
 
     let brgy_details = {
+        _id: req.body.id,
         Region: req.body.Region,
         Province: req.body.Province,
         City_municipality: req.body.City_municipality,
@@ -77,14 +61,14 @@ router.put('/:brgy_id', async (req,res)=>{
     //check if exist 
     let brgy_check = await brgy.findOne({Province: brgy_details.Province, City_municipality: brgy_details.City_municipality, Barangay: brgy_details.Barangay})
     if(brgy_check) {
-        if(brgy_check._id != brgy_id)
+        if(brgy_check._id != brgy_details._id)
         {
             return res.status(400).send('Brangay is already exist')
         }
     }
 
     try {
-        let barangay = await brgy.findOneAndUpdate({_id: brgy_id},brgy_details, {new: true})
+        let barangay = await brgy.findOneAndUpdate({_id: brgy_details._id},brgy_details, {new: true})
         res.send(barangay)
     } catch (error) {
         return res.status(400).send(error)
