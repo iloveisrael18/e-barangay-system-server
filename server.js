@@ -10,8 +10,8 @@ const home = require('./routes/home')
 require('./db')
 
 app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    origin: '*'
+    // methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
 
 
