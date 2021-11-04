@@ -11,7 +11,35 @@ router.get('/',async (req,res)=>{
     
 })
 
-router.get('/:BARANGAY_ID', async (req,res)=>{
+router.get('/REGION', async (req,res)=>{
+
+    let PROVINCE = req.body.PROVINCE
+    regionList = await brgy.findOne({PROVINCE: PROVINCE})
+    res.send(regionList)
+})
+
+router.post('/PROVINCE', async (req,res)=>{
+
+    let REGION = req.body.REGION
+    provinceList = await brgy.findOne({REGION: REGION})
+    res.send(provinceList)
+})
+
+router.post('/CITY_MUNICIPALITY', async (req,res)=>{
+
+    let PROVINCE = req.body.PROVINCE
+    CITY_MUNICIPALITY_List = await brgy.findOne({PROVINCE: PROVINCE})
+    res.send(CITY_MUNICIPALITY_List)
+})
+
+router.post('/BARANGAY', async (req,res)=>{
+
+    let CITY_MUNICIPALITY = req.body.CITY_MUNICIPALITY
+    barangaylist = await brgy.findOne({CITY_MUNICIPALITY: CITY_MUNICIPALITY})
+    res.send(barangaylist)
+})
+
+router.get('/barangay/:BARANGAY_ID', async (req,res)=>{
 
     let BARANGAY_ID = req.params.BARANGAY_ID
     brgyList = await brgy.findOne({_id: BARANGAY_ID})
