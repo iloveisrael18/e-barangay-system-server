@@ -33,12 +33,12 @@ require('./db')
 // });
 
 
+app.use(express.json())
+
 app.use(cors({
-    origin: '*'
+    origin: "*"
 }))
 
-
-app.use(express.json())
 app.use('/api/constituents',constituents)
 app.use('/api/certrequests', certrequests)
 app.use('/api/barangay', barangay)

@@ -3,10 +3,10 @@ const router = express.Router()
 const users = require('../Models/userModel')
 const bcrypt = require('bcrypt')
 const aut = require('../Auth/Authentication')
-const cors = require('cors')
 
 
-router.get('/getuserbyhid/:hid', cors(),async (req, res) => {
+
+router.get('/getuserbyhid/:hid',async (req, res) => {
 
     let hid = req.params.hid
     console.log(hid)
@@ -16,7 +16,7 @@ router.get('/getuserbyhid/:hid', cors(),async (req, res) => {
 })
 
 
-router.post('/',aut,cors(), async (req, res) => {
+router.post('/',aut, async (req, res) => {
 
     let password = req.body.PASSWORD
     let salt = await bcrypt.genSalt(10)

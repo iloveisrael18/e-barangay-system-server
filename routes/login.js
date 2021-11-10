@@ -4,9 +4,8 @@ const users = require('../Models/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const auth = require('../Auth/Authentication')
-const cors = require('cors')
 
-router.post('/', cors() ,async (req, res)=>{
+router.post('/',async (req, res)=>{
 
     let loginDetails = {}
     
